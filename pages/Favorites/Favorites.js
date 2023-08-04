@@ -9,15 +9,15 @@ function Favorites(){
     const favorites = useSelector((state) => state.favorites.favorites);
     const render = ({ item }) => <Card job={item}/>
     
-    // JOBS_URL = 'https://www.themuse.com/api/public/jobs?page=0';
+    JOBS_URL = `https://www.themuse.com/api/public/jobs?page=${favorites}`; //burada sorun war
 
-    // const data =  UseFetch(`JOBS_URL${favorites}`)
+    const data =  UseFetch(JOBS_URL)
 
-    console.log(favorites)
+    console.log(data)
     
     return(
         <FlatList
-            data={[]}   
+            data={data.name}   
             renderItem={render}
         />
     )

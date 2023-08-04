@@ -36,8 +36,8 @@ function Detail({route}){
                 
             </View>
             <View style={styles.btn}>
-                <Button text="Submit" onPress = { () => { Alert.alert('Successfully submitted!'),Linking.openURL(item.refs.landing_page)}} />
-                <Button text="Favorite" onPress={() => dispatch(addFavorites(item.company.id))} />
+                <Button text="Submit" onPress = {() => { Alert.alert('Successfully submitted!'),Linking.openURL(item.refs.landing_page)}} />
+                <Button text="Favorite" onPress={() => dispatch(addFavorites(item))} />
             </View>
         </ScrollView>
         
