@@ -1,26 +1,33 @@
 import React from 'react'
-import { FlatList } from 'react-native'
+import { FlatList,View,Text } from 'react-native'
 import { useSelector } from 'react-redux';
 import Card from '../../components/Card/Card'
-import UseFetch from '../../components/Hooks/UseFetch';
+import styles from './Favorites.style'
+
 
 function Favorites(){
 
     
     const favorites = useSelector((state) => state.favorites.favorites);
-     
 
-    const render = ({ item }) => <Card job={item} handlePress={() => handlePressedJob(item)} />
+    const render = ({ item }) => <Card removeActive={true}  job={item} handlePress={() => handlePressedJob(item)} />
     
+   
     function handlePressedJob(item){
         navigation.navigate("Details",{item})
     }
-    
+
     return(
-        <FlatList
-            data={favorites}   
-            renderItem={render}
-        />
+        favorites.length === 0
+            ?
+            <View style={styles.container}>
+                <Text style={styles.text}>You don't have any favourite job yet!</Text>
+            </View>
+            :
+            <FlatList
+                data={favorites}   
+                renderItem={render}
+            />
     )
 }
 

@@ -6,7 +6,7 @@ import RenderHTML from 'react-native-render-html';
 import styles from './Detail.style'
 import Button from '../../components/Button/Button'
 
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch,} from 'react-redux';
 
 import { addFavorites } from '../../context/store';
 
@@ -37,7 +37,7 @@ function Detail({route}){
             </View>
             <View style={styles.btn}>
                 <Button text="Submit" onPress = {() => { Alert.alert('Successfully submitted!'),Linking.openURL(item.refs.landing_page)}} />
-                <Button text="Favorite" onPress={() => dispatch(addFavorites(item))} />
+                <Button text="Favorite" onPress={() => { Alert.alert('Added to favorites!'),dispatch(addFavorites(item))}} />
             </View>
         </ScrollView>
         

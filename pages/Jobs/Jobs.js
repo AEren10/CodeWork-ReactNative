@@ -15,7 +15,7 @@ function Jobs({navigation}){
 
     const data =  UseFetch(JOBS_URL)
 
-    const renderJobCards = ({ item }) => <Card job={item} handlePress={() => handlePressedJob(item)} />
+    const renderJobCards = ({ item }) => <Card removeActive={false} job={item} handlePress={() => handlePressedJob(item)} />
 
     function handlePressedJob(item){
         navigation.navigate("Details",{item})
