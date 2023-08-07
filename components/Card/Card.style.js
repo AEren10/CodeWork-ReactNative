@@ -8,7 +8,7 @@ export default StyleSheet.create({
         backgroundColor:'white'
     },
     title: {
-        color: 'black',
+      
         fontSize: 20,
         fontWeight: 'bold',
     },
@@ -27,7 +27,7 @@ export default StyleSheet.create({
         alignItems: 'center',
     },
     location: {
-        color: 'Black',
+      
         fontWeight: 'bold'
     },
     level: {
