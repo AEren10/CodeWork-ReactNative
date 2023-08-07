@@ -6,18 +6,19 @@ import UseFetch from '../../components/Hooks/UseFetch';
 
 function Favorites(){
 
-    const favorites = useSelector((state) => state.favorites.favorites);
-    const render = ({ item }) => <Card job={item}/>
     
-    JOBS_URL = `https://www.themuse.com/api/public/jobs?page=${favorites}`; //burada sorun war
+    const favorites = useSelector((state) => state.favorites.favorites);
+     
 
-    const data =  UseFetch(JOBS_URL)
-
-    console.log(data)
+    const render = ({ item }) => <Card job={item} handlePress={() => handlePressedJob(item)} />
+    
+    function handlePressedJob(item){
+        navigation.navigate("Details",{item})
+    }
     
     return(
         <FlatList
-            data={data.name}   
+            data={favorites}   
             renderItem={render}
         />
     )
