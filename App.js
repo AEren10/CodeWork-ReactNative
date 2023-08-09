@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Jobs from './pages/Jobs/Jobs';
-import Favorites from './pages/Favorites/Favorites';
+import Favorites from './pages/Favorites/Favorites'
 import Detail from './pages/Detail/Detail';
 
 import store from './context/store';

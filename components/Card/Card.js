@@ -3,7 +3,7 @@ import { Pressable, Text, View } from 'react-native'
 import styles from './Card.style'
 import Button from '../Button/Button'
 import { useDispatch,useSelector } from 'react-redux';
-import { removeFavorites } from '../../context/store';
+import { removeFavorites } from '../../context/SliceFavorites';
 
 export default ({ job, handlePress, removeActive }) => {
 

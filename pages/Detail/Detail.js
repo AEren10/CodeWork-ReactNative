@@ -8,7 +8,7 @@ import Button from '../../components/Button/Button'
 
 import { useDispatch,} from 'react-redux';
 
-import { addFavorites } from '../../context/store';
+import { addFavorites } from '../../context/SliceFavorites';
 
 function Detail({route}){
     const {item} = route.params; 

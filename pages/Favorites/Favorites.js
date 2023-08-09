@@ -7,11 +7,9 @@ import styles from './Favorites.style'
 
 function Favorites(){
 
-    
     const favorites = useSelector((state) => state.favorites.favorites);
 
-    const render = ({ item }) => <Card removeActive={true}  job={item} handlePress={() => handlePressedJob(item)} />
-    
+    const render = ({ item }) =><Card removeActive={true}  job={item} handlePress={() => handlePressedJob(item)} />
    
     function handlePressedJob(item){
         navigation.navigate("Details",{item})
