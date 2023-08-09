@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Jobs from './pages/Jobs/Jobs';
 import Favorites from './pages/Favorites/Favorites'
 import Detail from './pages/Detail/Detail';
+import Basket from './pages/Basket/Basket';
 
 import store from './context/store';
 import { Provider } from 'react-redux';
@@ -28,9 +29,10 @@ function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-          <Drawer.Navigator>   
+          <Drawer.Navigator>  
               <Drawer.Screen name="Jobs" component={UserStack} options={{headerShown:false}} />
               <Drawer.Screen name="Favorites" component={Favorites} /> 
+              <Drawer.Screen name="Basket" component={Basket} /> 
           </Drawer.Navigator>
       </NavigationContainer>
     </Provider>

@@ -9,6 +9,7 @@ import Button from '../../components/Button/Button'
 import { useDispatch,} from 'react-redux';
 
 import { addFavorites } from '../../context/SliceFavorites';
+import { addBasket } from '../../context/SliceBasket';
 
 function Detail({route}){
     const {item} = route.params; 
@@ -35,10 +36,13 @@ function Detail({route}){
                 </View>
                 
             </View>
-            <View style={styles.btn}>
-                <Button text="Submit" onPress = {() => { Alert.alert('Successfully submitted!'),Linking.openURL(item.refs.landing_page)}} />
-                <Button text="Favorite" onPress={() => { Alert.alert('Added to favorites!'),dispatch(addFavorites(item))}} />
-            </View>
+                <View style={styles.btn_btn}>
+                <View style={styles.btn}>
+                    <Button text="Submit" onPress = {() => { Alert.alert('Successfully submitted!'),Linking.openURL(item.refs.landing_page)}} />
+                    <Button text="add Favorite" onPress={() => { Alert.alert('Added to favorites!'),dispatch(addFavorites(item))}} />
+                </View>
+                    <Button text="add Basket" onPress={() => { Alert.alert('Added to Basket!'),dispatch(addBasket(item))}}/>
+                </View>
         </ScrollView>
         
     )

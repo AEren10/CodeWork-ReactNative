@@ -5,11 +5,11 @@ import Card from '../../components/Card/Card'
 import styles from './Favorites.style'
 
 
-function Favorites(){
+function Favorites({navigation}){
 
     const favorites = useSelector((state) => state.favorites.favorites);
 
-    const render = ({ item }) =><Card removeActive={true}  job={item} handlePress={() => handlePressedJob(item)} />
+    const render = ({ item }) =><Card removeActive={true} page={true}  job={item} handlePress={() => handlePressedJob(item)} />
    
     function handlePressedJob(item){
         navigation.navigate("Details",{item})

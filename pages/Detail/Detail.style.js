@@ -39,7 +39,10 @@ export default StyleSheet.create({
     },
     btn:{
         flexDirection:'row',
-        marginBottom:25,
+        
+    },
+    btn_btn:{
+        marginBottom:40,
     }
 
 })

@@ -4,10 +4,13 @@ import styles from './Card.style'
 import Button from '../Button/Button'
 import { useDispatch,useSelector } from 'react-redux';
 import { removeFavorites } from '../../context/SliceFavorites';
+import { removeBasket } from '../../context/SliceBasket';
 
-export default ({ job, handlePress, removeActive }) => {
+export default ({ job, handlePress, removeActive, page }) => {
 
     const dispatch = useDispatch()
+
+    const text = page ? "Favorites" : "Basket"
 
     return (
         <Pressable style={styles.container} onPress={handlePress} >
@@ -17,7 +20,10 @@ export default ({ job, handlePress, removeActive }) => {
                 <Text style={styles.location}>{job.locations[0].name}</Text>
             </View>
             <Text style={styles.level}>{job.levels[0].name}</Text>
-            {removeActive ? <Button text={"Remove from favorites"} onPress={() => dispatch(removeFavorites())}/> : null}
+            {removeActive ? <Button text={`Remove from ${text}`} onPress={() => page 
+                ? dispatch(removeFavorites()) 
+                : dispatch(removeBasket()) }/> : null}
+            
         </Pressable>
     )
 }
