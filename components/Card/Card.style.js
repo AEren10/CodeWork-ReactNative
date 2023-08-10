@@ -35,5 +35,18 @@ export default StyleSheet.create({
         fontSize: 15,
         color: '#ef5350',
         fontWeight:'bold',
+    },
+    btn_container: {
+        flexDirection:'row',
+        justifyContent:'space-between',
+        marginHorizontal:10,
+    },
+    btn_innercontainer:{
+        flexDirection:'row',   
+    },
+    btn_text:{
+        fontSize:25,
+        fontWeight:'bold',
+        textAlign:'center',   
     }
 })
