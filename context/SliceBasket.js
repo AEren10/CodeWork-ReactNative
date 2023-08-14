@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  baskets : []
+  baskets : [],
+  
 }
 
 const basketSlice = createSlice({
@@ -9,14 +10,41 @@ const basketSlice = createSlice({
     initialState,
     reducers: {
       addBasket: (state,action) => {
-        state.baskets.push(action.payload)
+  
+        const existingProduct = state.baskets.find(item => item.id === action.payload.id);
+
+        if(existingProduct){
+          existingProduct.quantity += 1;
+        }
+        else{
+          state.baskets.push({...action.payload,quantity:1})
+        }
       },
       removeBasket: (state,action) => {
-        state.baskets.pop(action.payload)
+
+        const removeProduct = state.baskets.findIndex(item => item.id === action.payload.id);
+        state.baskets.splice(removeProduct,1)
+        
+      },
+
+      increaseQuantity: (state,action) => {
+
+        const existingProduct = state.baskets.find(item => item.id === action.payload.id);
+
+        if(existingProduct){
+          existingProduct.quantity += 1;
+        }
+      },
+
+      decrementQuantity: (state,action) => {  
+        const existingProduct = state.baskets.find(item => item.id === action.payload.id);     
+        if(existingProduct){
+          existingProduct.quantity -= 1;
+        }
       },
     },
   })
   
-export const { addBasket,removeBasket } = basketSlice.actions
+export const { addBasket , removeBasket , increaseQuantity , decrementQuantity } = basketSlice.actions
 
 export default basketSlice.reducer
