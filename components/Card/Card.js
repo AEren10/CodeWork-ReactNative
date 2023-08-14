@@ -6,14 +6,14 @@ import { useDispatch,useSelector } from 'react-redux';
 import { removeFavorites } from '../../context/SliceFavorites';
 import { removeBasket } from '../../context/SliceBasket';
 import CounterButton from '../CounterButton/CounterButton';
-import { increment } from '../../context/SliceCounter';
-import { decrement } from '../../context/SliceCounter';
+import { increaseQuantity } from '../../context/SliceBasket';
+import { decrementQuantity } from '../../context/SliceBasket';
 
 export default ({ job, handlePress, removeActive, page, handleCounter }) => {
 
     const dispatch = useDispatch()
 
-    const count = useSelector((state)=> state.Counter.Counter);
+    // const quantity = useSelector((state)=> state.baskets.baskets);
 
     const text = page ? "Favorites" : "Basket"
 
@@ -27,17 +27,17 @@ export default ({ job, handlePress, removeActive, page, handleCounter }) => {
             <Text style={styles.level}>{job.levels[0].name}</Text>
             {removeActive ? 
                 <Button text={`Remove from ${text}`} onPress={() => page 
-                ? dispatch(removeFavorites()) 
-                : dispatch(removeBasket()) }/> 
+                ? dispatch(removeFavorites(job)) 
+                : dispatch(removeBasket(job)) }/> 
                 : null}
             {handleCounter && 
                 <View style={styles.btn_container}>
-                <Text style={styles.btn_text}>Total: {count} </Text>
+                <Text style={styles.btn_text}>Total: {job.quantity} </Text>
                     <View style={styles.btn_innercontainer}>
-                        <CounterButton text={"+"} onPress={() => dispatch(increment())} /> 
-                        <CounterButton text={"-"} onPress={() => count > 1 ?
-                                                    dispatch(decrement()) :
-                                                    dispatch(removeBasket())} />  
+                        <CounterButton text={"+"} onPress={() => dispatch(increaseQuantity(job))} /> 
+                        <CounterButton text={"-"} onPress={() => job.quantity > 1 ?
+                                                    dispatch(decrementQuantity(job)) :
+                                                    dispatch(removeBasket(job))} />  
                     </View>
                 </View>
                 }

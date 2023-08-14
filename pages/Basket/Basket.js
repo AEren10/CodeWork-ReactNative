@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 function Basket(){
     
         const baskets = useSelector((state) => state.baskets.baskets); //sor
-
+        
         const render = ({ item }) => <Card removeActive={true} handleCounter={true}  job={item} page={false} />
        
         return(
