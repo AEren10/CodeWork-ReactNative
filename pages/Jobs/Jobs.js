@@ -1,36 +1,32 @@
-import React from 'react'
-import { Text,View } from 'react-native';
-import UseFetch from '../../components/Hooks/UseFetch';
-import RenderHTML from 'react-native-render-html';
-import { useWindowDimensions } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+import UseFetch from '../../components/Hooks/UseFetch';
 
-import Card from '../../components/Card/Card'
+import Card from '../../components/Card/Card';
 
+function Jobs({ navigation }) {
+  const JOBS_URL = 'https://www.themuse.com/api/public/jobs?page=0';
 
+  const data = UseFetch(JOBS_URL);
 
-function Jobs({navigation}){
+  function handlePressedJob(item) {
+    navigation.navigate('Details', { item });
+  }
 
-    JOBS_URL = 'https://www.themuse.com/api/public/jobs?page=0';
+  const renderJobCards = ({ item }) => <Card removeActive={false} job={item} handlePress={() => handlePressedJob(item)} />;
 
-    const data =  UseFetch(JOBS_URL)
+  return (
 
-    const renderJobCards = ({ item }) => <Card removeActive={false} job={item} handlePress={() => handlePressedJob(item)} />
-
-    function handlePressedJob(item){
-        navigation.navigate("Details",{item})
-    }
-
-    return(
-        
     <View>
-        <FlatList  showsVerticalScrollIndicator={false}
-            renderItem={renderJobCards}
-            data={data.results}
-        />
-        
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        renderItem={renderJobCards}
+        data={data.results}
+      />
+
     </View>
-    );
+  );
 }
 
 export default Jobs;
