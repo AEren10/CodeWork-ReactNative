@@ -9,21 +9,12 @@ function Basket() {
 
   const render = ({ item }) => <Card removeActive handleCounter job={item} page={false} />;
 
-  return (
-
-    baskets.length === 0
-      ? (
-        <View style={styles.container}>
-          <Text style={styles.text}>Your basket is empty!</Text>
-        </View>
-      )
-      : (
-        <FlatList
-          data={baskets}
-          renderItem={render}
-        />
-      )
-
+  return baskets.length === 0 ? (
+    <View style={styles.container}>
+      <Text style={styles.text}>Your basket is empty!</Text>
+    </View>
+  ) : (
+    <FlatList data={baskets} renderItem={render} />
   );
 }
 
