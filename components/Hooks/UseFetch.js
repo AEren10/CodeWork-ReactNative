@@ -4,19 +4,17 @@ import { useEffect, useState } from 'react';
 function UseFetch(url) {
   const [list, setlist] = useState('');
 
-const  FetchData = async () => {
+  const FetchData = async () => {
     const response = await axios.get(url);
     setlist(response.data);
   };
 
   useEffect(() => {
-    
     return () => {
-        FetchData()
+      FetchData();
     };
-  }),
+  });
 
-  return(list)
-
+  return list;
 }
 export default UseFetch;
